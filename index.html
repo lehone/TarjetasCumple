@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>15 Años - Kristen Mariana</title>
+    <title>Cumpleaños - Hildamaria Ortiz</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -94,18 +94,6 @@
             display: block;
         }
 
-        /* Custom Shimmer Effect */
-        .shimmer {
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            background-size: 200% 100%;
-            animation: shimmerEffect 3s infinite;
-        }
-
-        @keyframes shimmerEffect {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
         /* Float Animation */
         @keyframes floating {
             0%, 100% { transform: translateY(0px); }
@@ -119,11 +107,8 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-3 md:p-6 text-gray-800 relative">
 
-    <!-- Top Toolbar: Image Load Fallback for Preview & Music -->
+    <!-- Top Toolbar: Music -->
     <div class="fixed top-3 left-3 right-3 z-50 flex items-center justify-between pointer-events-none">
-        
-
-        <!-- Background Music Controls -->
         <button id="musicToggle" onclick="toggleAudio()" class="pointer-events-auto w-10 h-10 bg-white/90 backdrop-blur-md text-pink-600 rounded-full shadow-md flex items-center justify-center border border-pink-200 hover:bg-pink-50 transition active:scale-95" title="Música de fondo">
             <i id="musicIcon" class="fas fa-music text-base"></i>
         </button>
@@ -139,9 +124,9 @@
         <div id="envelopeStage" class="envelope-wrapper perspective-1000 my-auto text-center">
             <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/60 bg-white/20 backdrop-blur-xs">
                 
-                <!-- Envelope Cover Image (1000239435.png) -->
+                <!-- Envelope Cover Image -->
                 <div class="relative w-full aspect-[9/16] max-h-[80vh] overflow-hidden rounded-xl bg-pink-100 flex items-center justify-center">
-                    <img id="envelopeImg" src="https://raw.githubusercontent.com/lehone/TarjetasCumple/main/1000239435.png" alt="Portada Sobre 1000239435.png" class="w-full h-full object-contain shadow-inner">
+                    <img id="envelopeImg" src="https://raw.githubusercontent.com/lehone/TarjetasCumple/main/1000239435.png" alt="Portada Sobre" class="w-full h-full object-contain shadow-inner">
                     
                     <!-- Interactive Button Overlay over "ABRIR AQUÍ" area -->
                     <div class="absolute bottom-[28%] left-1/2 transform -translate-x-1/2 w-full flex flex-col items-center px-4">
@@ -161,12 +146,30 @@
         <!-- STAGE 2: REVEALED INVITATION CARD -->
         <div id="cardStage" class="card-container w-full my-auto">
             
-            <!-- Main Invitation Image Card -->
+            <!-- Main Invitation Info Card -->
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
                 
-                <!-- Main Card Image (1000239431.jpg) -->
-                <div class="relative w-full bg-pink-50 min-h-[300px] flex items-center justify-center">
-                    <img id="invitationImg" src="https://raw.githubusercontent.com/lehone/TarjetasCumple/main/1000239431.jpg" alt="Tarjeta Invitación" class="w-full h-auto block">
+                <!-- Invitation Text Block (Replaces Image) -->
+                <div class="relative w-full bg-gradient-to-br from-pink-50 to-rose-100 min-h-[300px] flex flex-col items-center justify-center p-8 text-center">
+                    
+                    <div class="mb-4">
+                        <i class="fas fa-crown text-3xl text-pink-400 opacity-80 animate-float"></i>
+                    </div>
+
+                    <p class="text-xs font-bold text-pink-600 uppercase tracking-widest mb-2">
+                        ¡Estás invitado a celebrar el cumpleaños de!
+                    </p>
+                    
+                    <h1 class="font-cursive text-5xl md:text-6xl text-rose-600 my-4 drop-shadow-sm leading-tight">
+                        Hildamaria Ortiz
+                    </h1>
+                    
+                    <div class="w-20 h-0.5 bg-pink-300 my-4 mx-auto rounded-full"></div>
+                    
+                    <div class="mt-2 space-y-1">
+                        <p class="font-serif-title text-2xl text-gray-800">4 de Octubre</p>
+                        <p class="text-lg text-pink-700 font-medium">1:00 PM</p>
+                    </div>
                 </div>
 
                 <!-- LIVE COUNTDOWN TIMER SECTION -->
@@ -252,29 +255,9 @@
         const musicIcon = document.getElementById('musicIcon');
         let isPlaying = false;
 
-        // Manual Image Uploader Fallback for Browser Security Restrictions
-        function handleManualImageUpload(event) {
-            const files = Array.from(event.target.files);
-            if (!files.length) return;
-
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Detect which image it is by filename or order
-                    if (file.name.includes('9435') || file.name.endsWith('.png') || files.indexOf(file) === 0) {
-                        document.getElementById('envelopeImg').src = e.target.result;
-                    }
-                    if (file.name.includes('9431') || file.name.endsWith('.jpg') || file.name.endsWith('.jpeg') || files.indexOf(file) === 1) {
-                        document.getElementById('invitationImg').src = e.target.result;
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
         // Open WhatsApp directly
         function openWhatsApp(phone) {
-            const message = encodeURIComponent("¡Hola! Confirmo mi asistencia para los 15 Años de Kristen Mariana ✨");
+            const message = encodeURIComponent("¡Hola! Confirmo mi asistencia para el cumpleaños de Hildamaria Ortiz ✨");
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
@@ -334,16 +317,16 @@
 
         // COUNTDOWN TIMER
         function updateCountdown() {
-            // Event Date: Sunday September 20, 1:00 PM
             const now = new Date();
             let currentYear = now.getFullYear();
             
-            // Target date setting (Sept 20)
-            let eventDate = new Date(currentYear, 8, 20, 13, 0, 0); // Month is 0-indexed (8 = September)
+            // Target date setting (Oct 4, 1:00 PM)
+            // Month is 0-indexed in JS (9 = October)
+            let eventDate = new Date(currentYear, 9, 4, 13, 0, 0); 
 
             // If date has passed this year, set to next year
             if (now > eventDate) {
-                eventDate = new Date(currentYear + 1, 8, 20, 13, 0, 0);
+                eventDate = new Date(currentYear + 1, 9, 4, 13, 0, 0);
             }
 
             const diff = eventDate - now;
