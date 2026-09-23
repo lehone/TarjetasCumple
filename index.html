@@ -149,7 +149,7 @@
             <!-- Main Invitation Info Card -->
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
                 
-                <!-- Invitation Text Block (Replaces Image) -->
+                <!-- Invitation Text Block -->
                 <div class="relative w-full bg-gradient-to-br from-pink-50 to-rose-100 min-h-[300px] flex flex-col items-center justify-center p-8 text-center">
                     
                     <div class="mb-4">
@@ -202,18 +202,11 @@
                     
                     <p class="text-xs font-bold text-pink-700 uppercase tracking-wider">Confirmar Asistencia (WhatsApp)</p>
                     
-                    <!-- WhatsApp Buttons -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="openWhatsApp('573204557402')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-4 rounded-xl shadow-md flex items-center justify-center space-x-2 transition active:scale-95 text-sm">
-                            <i class="fab fa-whatsapp text-lg"></i>
-                            <span>320 4557402</span>
-                        </button>
-
-                        <button onclick="openWhatsApp('573118384229')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-4 rounded-xl shadow-md flex items-center justify-center space-x-2 transition active:scale-95 text-sm">
-                            <i class="fab fa-whatsapp text-lg"></i>
-                            <span>311 8384229</span>
-                        </button>
-                    </div>
+                    <!-- Single WhatsApp Button -->
+                    <button onclick="openWhatsApp('573106280877')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3.5 px-4 rounded-xl shadow-md flex items-center justify-center space-x-2 transition active:scale-95 text-base">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>310 628 0877</span>
+                    </button>
 
                     <!-- Google Maps Location Button -->
                     <button onclick="openMap()" class="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg flex items-center justify-center space-x-2 transition active:scale-95 text-sm mt-3">
@@ -321,7 +314,6 @@
             let currentYear = now.getFullYear();
             
             // Target date setting (Oct 4, 1:00 PM)
-            // Month is 0-indexed in JS (9 = October)
             let eventDate = new Date(currentYear, 9, 4, 13, 0, 0); 
 
             // If date has passed this year, set to next year
